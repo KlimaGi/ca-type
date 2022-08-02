@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ["plugin:react/recommended", "airbnb-base", "airbnb-typescript"],
+  extends: ["airbnb-base", "airbnb-typescript"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
@@ -13,8 +13,9 @@ module.exports = {
     sourceType: "module",
     project: "./tsconfig.json",
   },
-  plugins: ["react", "@typescript-eslint"],
+  plugins: ["@typescript-eslint"],
   rules: {
-    "react/jsx-filename-extension": [0],
+    "comma-dangle": "off",
+    "@typescript-eslint/comma-dangle": [2],
   },
 };

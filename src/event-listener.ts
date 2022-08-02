@@ -1,11 +1,11 @@
-const inputField: HTMLInputElement | null = document.querySelector("#input");
-const result: HTMLParagraphElement | null = document.querySelector("#result");
+const inputField: HTMLInputElement | null = document.querySelector('#input');
+const result: HTMLParagraphElement | null = document.querySelector('#result');
 
 if (inputField === null) {
-  throw new Error("Neteisingas ivesties lauko selektorius");
+  throw new Error('Neteisingas ivesties lauko selektorius');
 }
 if (result === null) {
-  throw new Error("Neteisingas rezultatu konteinerio selektorius");
+  throw new Error('Neteisingas rezultatu konteinerio selektorius');
 }
 
 const handleFieldChange: EventListener = (event) => {
@@ -13,4 +13,4 @@ const handleFieldChange: EventListener = (event) => {
   result.innerHTML = element.value;
 };
 
-inputField.addEventListener("keyup", handleFieldChange);
+inputField.addEventListener('keyup', handleFieldChange);
