@@ -17,5 +17,7 @@ module.exports = {
   rules: {
     "comma-dangle": "off",
     "@typescript-eslint/comma-dangle": [2],
+    'arrow-parens': [0],
+    
   },
 };
