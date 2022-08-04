@@ -127,3 +127,24 @@ console.group('8. Sukurkite funkciją, kuri pirmu parametru priimtų žodį, o a
   console.log('tandem', removeLettersFromWord('tandem', ['t', 'e', 'm']));
 }
 console.groupEnd();
+
+// 60 min
+// 9. Sukurkite funkciją, kuri taiso teksto klaidas, pagal tokius reikalavimus:
+//  * Pirma sakinio raidė didžioji.
+//  * Po skiriamojo ženklo tarpas, o prieš skiriamajį ženklą nėra tarpo (skiriamieji ženklai: .,!?)
+//  * Bet koks kiekis tarpų pakeičiamas vienu tarpu
+//  * Pašalinti tarpus aplink visą tekstą
+console.group('9. Sukurkite funkciją, kuri taiso pastraipos klaidas');
+{
+  const correctP = (str: string): string => {
+    const result = str.trim();
+
+    const wordArr = str.split(' ').filter(item => item.length !== 0);
+    const addSpaces = wordArr.map(word => word.replace('.', '. ')).map(word => word.replace(',', ', ')).join('');
+    const separateSentence = addSpaces.split('. ');
+    const capitalize = separateSentence.map(item => item[0].toUpperCase() + item.slice(1)).join('. ');
+    return capitalize;
+  };
+  console.log('lorem , ipsum .  dolor,sit.ametito ?! -->', correctP('lorem , ipsum .  dolor,sit.ametito ?! '));
+}
+console.groupEnd();
