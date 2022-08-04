@@ -95,9 +95,10 @@ console.group('6. Sukurkite funkciją, kuri grąžina bet kokios raidės kiekį 
     const randomWordIndex = randomIndex(wordLength, 0);
 
     const letter = word5.charAt(randomWordIndex);
-    const letterArr = word5.split('');
+
     let countOfLetter = 0;
-    letterArr.forEach((item) => {
+
+    [...word5].forEach((item) => {
       if (item === letter) countOfLetter += 1;
     });
 
@@ -108,8 +109,21 @@ console.group('6. Sukurkite funkciją, kuri grąžina bet kokios raidės kiekį 
 console.groupEnd();
 
 // 15 min
-console.groupCollapsed('7. Sukurkite funkciją, kuri ištrintų pirmą surastą simbolį žodyje ir grąžintų pakeistą žodį');
+console.group('7. Sukurkite funkciją, kuri ištrintų pirmą surastą simbolį žodyje ir grąžintų pakeistą žodį');
 {
+  const withoutFirstLetter = (str: string, letter: string): string => str.replace(letter, '');
+  console.log('liepa - e', withoutFirstLetter('liepa', 'e'));
+}
+console.groupEnd();
 
+// 20 min
+//  8. Sukurkite funkciją, kuri pirmu parametru priimtų žodį, o antruoju - masyvą su raidėmis.
+//  Ši funkcija turi žodyje ištrinti visas raides, kurios perduotos antruoju parametru.
+//  Atlikus veiksmus, grąžinti pakeistą žodį
+console.group('8. Sukurkite funkciją, kuri pirmu parametru priimtų žodį, o antruoju - masyvą su raidėmis.');
+{
+  const removeLettersFromWord = (str: string, letters: string[]): string => letters.reduce((acc, curr) => acc.replaceAll(curr, ''), str);
+
+  console.log('tandem', removeLettersFromWord('tandem', ['t', 'e', 'm']));
 }
 console.groupEnd();
