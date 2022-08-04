@@ -136,14 +136,21 @@ console.groupEnd();
 //  * Pašalinti tarpus aplink visą tekstą
 console.group('9. Sukurkite funkciją, kuri taiso pastraipos klaidas');
 {
-  const correctP = (str: string): string => {
-    const result = str.trim();
+  type StringModifierToArr = (str: string) => string[];
+  type ArrModifierToString = (strArr: string[]) => string;
 
-    const wordArr = str.split(' ').filter(item => item.length !== 0);
-    const addSpaces = wordArr.map(word => word.replace('.', '. ')).map(word => word.replace(',', ', ')).join('');
-    const separateSentence = addSpaces.split('. ');
-    const capitalize = separateSentence.map(item => item[0].toUpperCase() + item.slice(1)).join('. ');
-    return capitalize;
+  const wordArr: StringModifierToArr = str => str.split(' ').filter(item => item.length !== 0);
+
+  const addSpaces: ArrModifierToString = strArr => strArr.map(word => word.replace('.', '. ')).map(word => word.replace(',', ', ')).join('');
+
+  const sentenceCapitalize: ArrModifierToString = strArr => strArr.split('. ').map(item => item[0].toUpperCase() + item.slice(1)).join('. ');
+
+  const correctP = (str: string): string => {
+    let result = str.trim();
+    result = wordArr(result);
+    result = addSpaces(result);
+    result = sentenceCapitalize(result);
+    return result;
   };
   console.log('lorem , ipsum .  dolor,sit.ametito ?! -->', correctP('lorem , ipsum .  dolor,sit.ametito ?! '));
 }

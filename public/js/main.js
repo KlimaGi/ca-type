@@ -91,13 +91,15 @@ console.group('8. Sukurkite funkciją, kuri pirmu parametru priimtų žodį, o a
 console.groupEnd();
 console.group('9. Sukurkite funkciją, kuri taiso pastraipos klaidas');
 {
+    const wordArr = str => str.split(' ').filter(item => item.length !== 0);
+    const addSpaces = strArr => strArr.map(word => word.replace('.', '. ')).map(word => word.replace(',', ', ')).join('');
+    const sentenceCapitalize = strArr => strArr.split('. ').map(item => item[0].toUpperCase() + item.slice(1)).join('. ');
     const correctP = (str) => {
-        const result = str.trim();
-        const wordArr = str.split(' ').filter(item => item.length !== 0);
-        const addSpaces = wordArr.map(word => word.replace('.', '. ')).map(word => word.replace(',', ', ')).join('');
-        const separateSentence = addSpaces.split('. ');
-        const capitalize = separateSentence.map(item => item[0].toUpperCase() + item.slice(1)).join('. ');
-        return capitalize;
+        let result = str.trim();
+        result = wordArr(result);
+        result = addSpaces(result);
+        result = sentenceCapitalize(result);
+        return result;
     };
     console.log('lorem , ipsum .  dolor,sit.ametito ?! -->', correctP('lorem , ipsum .  dolor,sit.ametito ?! '));
 }
