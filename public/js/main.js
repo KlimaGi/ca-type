@@ -92,14 +92,15 @@ console.groupEnd();
 console.group('9. Sukurkite funkciją, kuri taiso pastraipos klaidas');
 {
     const wordArr = str => str.split(' ').filter(item => item.length !== 0);
-    const addSpaces = strArr => strArr.map(word => word.replace('.', '. ')).map(word => word.replace(',', ', ')).join('');
-    const sentenceCapitalize = strArr => strArr.split('. ').map(item => item[0].toUpperCase() + item.slice(1)).join('. ');
+    const addSpaces = strArr => strArr.map(word => word.replace('.', '. ')).map(word => word.replace(',', ', '));
+    const sentenceCapitalize = strArr => strArr.join('').split('. ').map(item => item[0].toUpperCase() + item.slice(1)).join('. ');
     const correctP = (str) => {
-        let result = str.trim();
-        result = wordArr(result);
-        result = addSpaces(result);
-        result = sentenceCapitalize(result);
-        return result;
+        let tempstr = str.trim();
+        let tempStrArr;
+        tempStrArr = wordArr(tempstr);
+        tempStrArr = addSpaces(tempStrArr);
+        tempstr = sentenceCapitalize(tempStrArr);
+        return tempstr;
     };
     console.log('lorem , ipsum .  dolor,sit.ametito ?! -->', correctP('lorem , ipsum .  dolor,sit.ametito ?! '));
 }

@@ -138,19 +138,22 @@ console.group('9. Sukurkite funkciją, kuri taiso pastraipos klaidas');
 {
   type StringModifierToArr = (str: string) => string[];
   type ArrModifierToString = (strArr: string[]) => string;
+  type ArrModifier = (strArr: string[]) => string[];
 
   const wordArr: StringModifierToArr = str => str.split(' ').filter(item => item.length !== 0);
 
-  const addSpaces: ArrModifierToString = strArr => strArr.map(word => word.replace('.', '. ')).map(word => word.replace(',', ', ')).join('');
+  const addSpaces: ArrModifier = strArr => strArr.map(word => word.replace('.', '. ')).map(word => word.replace(',', ', '));
 
-  const sentenceCapitalize: ArrModifierToString = strArr => strArr.split('. ').map(item => item[0].toUpperCase() + item.slice(1)).join('. ');
+  const sentenceCapitalize: ArrModifierToString = strArr => strArr.join('').split('. ').map(item => item[0].toUpperCase() + item.slice(1)).join('. ');
 
   const correctP = (str: string): string => {
-    let result = str.trim();
-    result = wordArr(result);
-    result = addSpaces(result);
-    result = sentenceCapitalize(result);
-    return result;
+    let tempstr: string = str.trim();
+    let tempStrArr: string[];
+
+    tempStrArr = wordArr(tempstr);
+    tempStrArr = addSpaces(tempStrArr);
+    tempstr = sentenceCapitalize(tempStrArr);
+    return tempstr;
   };
   console.log('lorem , ipsum .  dolor,sit.ametito ?! -->', correctP('lorem , ipsum .  dolor,sit.ametito ?! '));
 }
